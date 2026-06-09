@@ -25,7 +25,12 @@ align-items: center;
 nav a {
 color: white;
 text-decoration: none;
-margin-left: 20px;
+margin-left: 25px;
+transition: 0.3s;
+}
+
+nav a:hover {
+color: orange;
 }
 
 .hero {
@@ -33,17 +38,35 @@ text-align: center;
 padding: 100px 20px;
 }
 
-.hero h2 {
-font-size: 3rem;
+.hero h1 {
+font-size: 4rem;
 margin-bottom: 20px;
 }
 
-.hero button {
-padding: 12px 24px;
-border: none;
+.hero p {
+max-width: 700px;
+margin: auto;
+font-size: 1.2rem;
+color: #cccccc;
+}
+
+.hero-buttons {
+margin-top: 30px;
+}
+
+.hero-buttons button {
+padding: 14px 28px;
 border-radius: 8px;
+border: none;
+margin: 0 10px;
 cursor: pointer;
-margin-top: 20px;
+font-size: 1rem;
+}
+
+.secondary {
+background: transparent;
+border: 1px solid white;
+color: white;
 }
 
 .specials {
@@ -56,7 +79,15 @@ padding: 20px;
 border-radius: 10px;
 margin-bottom: 15px;
 }
-s
+
+.featured {
+padding: 50px;
+}
+
+.featured h2 {
+margin-bottom: 30px;
+}
+
 .menu-section {
 padding: 50px;
 }
@@ -90,4 +121,59 @@ color: #cccccc;
 width: 100%;
 padding: 10px;
 cursor: pointer;
+}
+
+.about-section {
+padding: 60px;
+max-width: 900px;
+margin: auto;
+}
+
+.about-section h2 {
+margin-bottom: 25px;
+}
+
+.about-section p {
+margin-bottom: 20px;
+line-height: 1.8;
+color: #cccccc;
+}
+
+footer {
+background: #1a1a1a;
+text-align: center;
+padding: 25px;
+margin-top: 50px;
+}
+
+footer p {
+margin: 5px 0;
+color: #aaaaaa;
+}
+
+button {
+transition: 0.3s;
+}
+
+button:hover {
+transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+
+```
+header {
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+}
+
+.menu-grid {
+    grid-template-columns: 1fr;
+}
+```
+
 }
