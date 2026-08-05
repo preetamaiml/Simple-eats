@@ -4,32 +4,38 @@
         "name": "Chicken Curry Bowl",
         "description": "Fresh chicken curry served with steamed rice.",
         "price": 199,
-        "category": "Main Course",
+        "category": "Main Course-Non-Vegetarian",
         "image": "images/chicken-curry.jpg",
         "available": true,
         "isSpecial": true,
-        "prepTime": 20
+        "prepTime": 20,
+        "rating": 4.2,
+        "review": 124
     },
     {
         "id": 2,
         "name": "Paneer Rice Bowl",
         "description": "Paneer served with seasoned rice.",
         "price": 179,
-        "category": "Veg",
+        "category": "Vegetarian",
         "image": "images/paneer-rice.jpg",
         "available": true,
         "isSpecial": false,
-        "prepTime": 15
+        "prepTime": 15,
+        "rating": 4.2,
+        "review": 124
     },
     {
         "id": 3,
         "name": "Veg Thali",
         "description": "Balanced vegetarian meal.",
         "price": 149,
-        "category": "Veg",
+        "category": "Vegetarian",
         "image": "images/veg-thali.jpg",
         "available": true,
         "isSpecial": false,
-        "prepTime": 18
+        "prepTime": 18,
+        "rating": 4.2,
+        "review": 124
     }
 ]
