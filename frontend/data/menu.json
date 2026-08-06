@@ -10,7 +10,7 @@
         "isSpecial": true,
         "prepTime": 20,
         "rating": 4.2,
-        "review": 124
+        "reviews": 124
     },
     {
         "id": 2,
@@ -23,7 +23,7 @@
         "isSpecial": false,
         "prepTime": 15,
         "rating": 4.2,
-        "review": 124
+        "reviews": 124
     },
     {
         "id": 3,
@@ -36,6 +36,6 @@
         "isSpecial": false,
         "prepTime": 18,
         "rating": 4.2,
-        "review": 124
+        "reviews": 124
     }
 ]
