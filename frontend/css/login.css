@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 20px;
+}
+
+nav a {
+    margin-right: 15px;
+}
+
+.login-section {
+    max-width: 400px;
+    margin: 60px auto;
+}
+
+.login-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.login-section input {
+    padding: 10px;
+}
+
+.login-section button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.login-section p {
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+}

@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 20px;
+}
+
+nav a {
+    margin-right: 15px;
+}
+
+.register-section {
+    max-width: 400px;
+    margin: 60px auto;
+}
+
+.register-section form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-section input {
+    padding: 10px;
+}
+
+.register-section button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.register-section p {
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 60px;
+}
