@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Simple Eats - Checkout</title>
+
+    <link rel="stylesheet" href="css/checkout.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>Simple Eats</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Login</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section class="checkout-section">
+
+        <h2>Checkout</h2>
+
+
+        <!-- Customer Details -->
+
+        <div class="customer-details">
+
+            <h3>Delivery Details</h3>
+
+            <form id="checkout-form">
+
+                <label for="name">Full Name</label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                >
+
+
+                <label for="phone">Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                >
+
+
+                <label for="email">Email</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                >
+
+
+                <label for="address">Delivery Address</label>
+
+                <textarea
+                    id="address"
+                    name="address"
+                    rows="4"
+                    required
+                ></textarea>
+
+
+                <label for="city">City</label>
+
+                <input
+                    type="text"
+                    id="city"
+                    name="city"
+                    value="Mumbai"
+                    required
+                >
+
+
+                <label for="pincode">Pincode</label>
+
+                <input
+                    type="text"
+                    id="pincode"
+                    name="pincode"
+                    required
+                >
+
+
+                <label for="instructions">
+                    Delivery Instructions (optional)
+                </label>
+
+                <textarea
+                    id="instructions"
+                    name="instructions"
+                    rows="3"
+                ></textarea>
+
+
+                <button type="submit">
+                    Place Order
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Order Summary -->
+
+        <div class="order-summary">
+
+            <h3>Order Summary</h3>
+
+            <div id="checkout-items">
+
+            </div>
+
+            <div class="checkout-total">
+
+                <strong>Total:</strong>
+
+                <span id="checkout-total">₹0</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>© 2026 Simple Eats</p>
+    <p>Mumbai, India</p>
+    <p>support@simpleeats.com</p>
+
+</footer>
+
+
+<script src="js/checkout.js"></script>
+
+</body>
+
+</html>
