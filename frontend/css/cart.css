@@ -16,9 +16,38 @@ nav a {
 }
 
 .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     padding: 20px;
     margin-bottom: 15px;
+
     border: 1px solid #ccc;
+}
+
+.cart-item-info h3 {
+    margin-bottom: 8px;
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cart-item-controls button {
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.cart-item-controls span {
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-button {
+    margin-left: 15px;
 }
 
 .cart-summary {
