@@ -41,6 +41,10 @@ function displayMenu(menuItems) {
 
     menuItems.forEach(item => {
 
+        if (!item.available) {
+            return;
+        }
+
         const card = createFoodCard(item);
 
         menuContainer.appendChild(card);
@@ -75,6 +79,50 @@ function createFoodCard(item) {
 
     `;
 
-    return card;
 
+    const button = card.querySelector("button");
+
+
+    button.addEventListener("click", function () {
+
+        addToCart(item);
+
+    });
+
+
+    return card;
+}
+
+// ------------------------------
+// Add item to cart
+// ------------------------------
+
+function addToCart(item) {
+
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+
+
+    if (existingItem) {
+
+        existingItem.quantity += 1;
+
+    } else {
+
+        cart.push({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: 1
+        });
+
+    }
+
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+
+    alert(`${item.name} added to cart!`);
 }
