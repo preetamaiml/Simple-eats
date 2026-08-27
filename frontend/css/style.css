@@ -14,11 +14,9 @@ header {
 background: #1f1f1f;
 padding: 20px;
 
-```
 display: flex;
 justify-content: space-between;
 align-items: center;
-```
 
 }
 
@@ -54,7 +52,8 @@ color: #cccccc;
 margin-top: 30px;
 }
 
-.hero-buttons button {
+.hero-buttons .button {
+display: inline-block;
 padding: 14px 28px;
 border-radius: 8px;
 border: none;
@@ -161,7 +160,6 @@ transform: scale(1.05);
 
 @media (max-width: 768px) {
 
-```
 header {
     flex-direction: column;
     gap: 15px;
@@ -174,6 +172,6 @@ header {
 .menu-grid {
     grid-template-columns: 1fr;
 }
-```
+
 
 }

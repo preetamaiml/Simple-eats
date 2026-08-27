@@ -1,4 +1,4 @@
-console.log("menu.js is working");
+console.log("menu.js loaded");
 
 // Wait until the HTML page is fully loaded
 document.addEventListener("DOMContentLoaded", loadMenu);
