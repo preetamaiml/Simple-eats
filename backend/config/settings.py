@@ -25,8 +25,15 @@ SECRET_KEY = "django-insecure-$=cxq81x)s8wk^4^j%9tr0o@%bh($_#^l5$9$b)=mpmyfx_w0s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost:8000",
+    "https://*.app.github.dev",
+]
 
 # Application definition
 
@@ -37,6 +44,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    "restaurant",
 ]
 
 MIDDLEWARE = [
