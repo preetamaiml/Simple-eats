@@ -12,7 +12,7 @@ async function loadMenu() {
 
     try {
 
-        const response = await fetch("http://localhost:8000/api/menu/");
+        const response = await fetch("https://ubiquitous-halibut-p7jwpv9qrp5v27qvw-8000.app.github.dev/api/menu/");
 
         const menuItems = await response.json();
 
