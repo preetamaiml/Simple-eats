@@ -5,14 +5,16 @@ document.addEventListener("DOMContentLoaded", loadMenu);
 
 
 // ------------------------------
-// Load menu data from JSON
+// Load menu data from Django API
 // ------------------------------
 
 async function loadMenu() {
 
     try {
 
-        const response = await fetch("https://ubiquitous-halibut-p7jwpv9qrp5v27qvw-8000.app.github.dev/api/menu/");
+        const response = await fetch(
+            "https://ubiquitous-halibut-p7jwpv9qrp5v27qvw-8000.app.github.dev/api/menu/"
+        );
 
         const menuItems = await response.json();
 
@@ -92,6 +94,7 @@ function createFoodCard(item) {
 
     return card;
 }
+
 
 // ------------------------------
 // Add item to cart

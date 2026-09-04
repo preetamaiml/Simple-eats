@@ -28,7 +28,9 @@ DEBUG = True
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
+    "ubiquitous-halibut-p7jwpv9qrp5v27qvw-8000.app.github.dev",
 ]
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://localhost:8000",
@@ -136,5 +138,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5500",
     "https://ubiquitous-halibut-p7jwpv9qrp5v27qvw-5500.app.github.dev",
 ]
