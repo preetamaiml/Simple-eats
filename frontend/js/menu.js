@@ -12,7 +12,7 @@ async function loadMenu() {
 
     try {
 
-        const response = await fetch("data/menu.json");
+        const response = await fetch("http://localhost:8000/api/menu/");
 
         const menuItems = await response.json();
 
