@@ -1,9 +1,12 @@
+from decimal import Decimal
+
 from django.http import JsonResponse
-from .models import MenuItem
+from django.views.decorators.csrf import csrf_exempt
+
+from .models import MenuItem, Order, OrderItem
 
 
 def menu_list(request):
-
     menu_items = MenuItem.objects.filter(
         available=True
     )
@@ -11,7 +14,6 @@ def menu_list(request):
     data = []
 
     for item in menu_items:
-
         data.append({
             "id": item.id,
             "name": item.name,
@@ -26,3 +28,15 @@ def menu_list(request):
         })
 
     return JsonResponse(data, safe=False)
+
+
+@csrf_exempt
+def order_create(request):
+
+    if request.method != "POST":
+        return JsonResponse(
+            {"error": "Only POST requests are allowed."},
+            status=405
+        )
+
+    # We'll add the order creation logic here next.
