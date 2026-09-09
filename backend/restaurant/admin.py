@@ -24,9 +24,12 @@ class MenuItemAdmin(admin.ModelAdmin):
         "description",
     )
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-
     list_display = (
         "id",
         "customer_name",
@@ -46,6 +49,8 @@ class OrderAdmin(admin.ModelAdmin):
         "phone",
         "email",
     )
+
+    inlines = [OrderItemInline]
 
 
 @admin.register(OrderItem)

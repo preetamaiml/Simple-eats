@@ -75,7 +75,7 @@ function displayOrderSummary(cart) {
 
 document
     .getElementById("checkout-form")
-    .addEventListener("submit", function(event) {
+    .addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
@@ -92,7 +92,7 @@ document
 
         const customerDetails = {
 
-            name: document.getElementById("name").value,
+            customer_name: document.getElementById("name").value,
 
             phone: document.getElementById("phone").value,
 
@@ -110,15 +110,76 @@ document
         };
 
 
-        console.log("Customer:", customerDetails);
+        const orderItems = cart.map(item => ({
 
-        console.log("Order:", cart);
+            menu_item_id: item.id,
+
+            quantity: item.quantity
+
+        }));
 
 
-        alert("Order placed successfully!");
+        const orderData = {
+
+            ...customerDetails,
+
+            items: orderItems
+
+        };
 
 
-        // Clear cart after order
-        localStorage.removeItem("cart");
+        try {
+
+            const response = await fetch(
+                "https://ubiquitous-halibut-p7jwpv9qrp5v27qvw-8000.app.github.dev/api/orders/",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify(orderData)
+                }
+            );
+
+
+            const result = await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    result.error || "Failed to place order."
+                );
+
+            }
+
+
+            console.log("Order created:", result);
+
+
+            alert(
+                `Order #${result.order_id} placed successfully!`
+            );
+
+
+            // Clear cart only after successful order
+            localStorage.removeItem("cart");
+
+
+            // Return customer to menu
+            window.location.href = "menu.html";
+
+
+        } catch (error) {
+
+            console.error("Error placing order:", error);
+
+            alert(
+                "There was a problem placing your order. Please try again."
+            );
+
+        }
 
     });
