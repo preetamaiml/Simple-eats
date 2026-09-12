@@ -58,27 +58,74 @@ function displayOrder(order) {
         </ul>
     `;
 
-    statusContainer.innerHTML = `
-        <h3>Status</h3>
-
-        <p>
-            ${formatStatus(order.status)}
-        </p>
-    `;
+    statusContainer.innerHTML = createStatusTimeline(order.status);
 }
 
 
-function formatStatus(status) {
+function createStatusTimeline(currentStatus) {
 
-    const statusNames = {
-        pending: "Pending",
-        confirmed: "Confirmed",
-        preparing: "Preparing",
-        ready: "Ready",
-        out_for_delivery: "Out for Delivery",
-        delivered: "Delivered",
-        cancelled: "Cancelled"
-    };
+    const statuses = [
+        {
+            key: "pending",
+            label: "Order Placed"
+        },
+        {
+            key: "confirmed",
+            label: "Confirmed"
+        },
+        {
+            key: "preparing",
+            label: "Preparing"
+        },
+        {
+            key: "ready",
+            label: "Ready"
+        },
+        {
+            key: "out_for_delivery",
+            label: "Out for Delivery"
+        },
+        {
+            key: "delivered",
+            label: "Delivered"
+        }
+    ];
 
-    return statusNames[status] || status;
+    const currentIndex = statuses.findIndex(
+        status => status.key === currentStatus
+    );
+
+    return `
+        <h3>Order Status</h3>
+
+        <div class="status-timeline">
+
+            ${statuses.map((status, index) => {
+
+                let className = "";
+
+                if (index < currentIndex) {
+                    className = "completed";
+                } else if (index === currentIndex) {
+                    className = "current";
+                }
+
+                return `
+                    <div class="status-step ${className}">
+
+                        <div class="status-circle">
+                            ${index <= currentIndex ? "✓" : ""}
+                        </div>
+
+                        <div class="status-label">
+                            ${status.label}
+                        </div>
+
+                    </div>
+                `;
+
+            }).join("")}
+
+        </div>
+    `;
 }

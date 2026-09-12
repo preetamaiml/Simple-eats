@@ -175,3 +175,50 @@ header {
 
 
 }
+
+
+.status-timeline {
+    margin: 30px 0;
+}
+
+.status-step {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.status-circle {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+.status-step.completed .status-circle,
+.status-step.current .status-circle {
+    border-color: #333;
+}
+
+.status-step.current .status-circle {
+    background-color: #333;
+    color: white;
+}
+
+.status-label {
+    font-size: 16px;
+}
+
+.status-step.completed .status-label {
+    font-weight: normal;
+}
+
+.status-step.current .status-label {
+    font-weight: bold;
+}
