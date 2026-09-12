@@ -164,12 +164,13 @@ document
             );
 
 
+            localStorage.setItem("lastOrderId", result.order_id);
             // Clear cart only after successful order
             localStorage.removeItem("cart");
 
 
             // Return customer to menu
-            window.location.href = "menu.html";
+            window.location.href = "order-tracking.html";
 
 
         } catch (error) {

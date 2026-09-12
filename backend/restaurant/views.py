@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import MenuItem, Order, OrderItem
+from django.shortcuts import get_object_or_404
 
 
 def menu_list(request):
@@ -136,3 +137,33 @@ def order_create(request):
         "total_amount": float(order.total_amount),
         "status": order.status
     }, status=201)
+
+
+
+def order_detail(request, order_id):
+
+    if request.method != "GET":
+        return JsonResponse(
+            {"error": "Only GET requests are allowed."},
+            status=405
+        )
+
+    order = get_object_or_404(Order, id=order_id)
+
+    data = {
+        "order_id": order.id,
+        "customer_name": order.customer_name,
+        "total_amount": float(order.total_amount),
+        "status": order.status,
+        "created_at": order.created_at,
+        "items": []
+    }
+
+    for item in order.items.all():
+        data["items"].append({
+            "name": item.menu_item.name,
+            "quantity": item.quantity,
+            "price": float(item.price),
+        })
+
+    return JsonResponse(data)
