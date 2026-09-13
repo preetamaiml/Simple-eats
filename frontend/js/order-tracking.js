@@ -1,6 +1,16 @@
-document.addEventListener("DOMContentLoaded", loadOrder);
+let statusInterval;
+
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    loadOrder();
+
+    statusInterval = setInterval(loadOrder, 10000);
+
+});
 
 async function loadOrder() {
+    console.log("Checking order status:", new Date().toLocaleTimeString());
 
     const orderId = localStorage.getItem("lastOrderId");
 
@@ -23,6 +33,14 @@ async function loadOrder() {
         const order = await response.json();
 
         displayOrder(order);
+
+        // Stop checking once the order reaches a final state
+        if (
+            order.status === "delivered" ||
+            order.status === "cancelled"
+        ) {
+            clearInterval(statusInterval);
+        }
 
     } catch (error) {
 
