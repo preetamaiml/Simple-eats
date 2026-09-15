@@ -7,6 +7,93 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import MenuItem, Order, OrderItem
 from django.shortcuts import get_object_or_404
 
+from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+
+
+@csrf_exempt
+def register(request):
+
+    if request.method != "POST":
+        return JsonResponse(
+            {"error": "Only POST requests are allowed."},
+            status=405
+        )
+
+    try:
+        data = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse(
+            {"error": "Invalid JSON."},
+            status=400
+        )
+
+    username = data.get("username", "").strip()
+    email = data.get("email", "").strip().lower()
+    password = data.get("password", "")
+
+    if not username or not email or not password:
+        return JsonResponse(
+            {"error": "Username, email and password are required."},
+            status=400
+        )
+
+    if User.objects.filter(username=username).exists():
+        return JsonResponse(
+            {"error": "Username already exists."},
+            status=400
+        )
+
+    if User.objects.filter(email=email).exists():
+        return JsonResponse(
+            {"error": "Email already registered."},
+            status=400
+        )
+
+    try:
+        validate_password(password)
+    except ValidationError as error:
+        return JsonResponse(
+            {"error": error.messages},
+            status=400
+        )
+
+    user = User.objects.create_user(
+        username=username,
+        email=email,
+        password=password
+    )
+
+    user.is_active = False
+    user.save()
+
+    token = default_token_generator.make_token(user)
+
+    verification_url = (
+        "http://localhost:5500/verify-email.html"
+        f"?user_id={user.id}&token={token}"
+    )
+
+    send_mail(
+        subject="Verify your Simple Eats account",
+        message=(
+            "Welcome to Simple Eats!\n\n"
+            "Please verify your email by clicking the link below:\n\n"
+            f"{verification_url}\n\n"
+            "If you did not create this account, you can ignore this email."
+        ),
+        from_email="noreply@simpleeats.com",
+        recipient_list=[user.email],
+    )
+
+    return JsonResponse(
+        {
+            "message": "Registration successful. Please check your email."
+        },
+        status=201
+    )
+
 
 def menu_list(request):
     menu_items = MenuItem.objects.filter(
