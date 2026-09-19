@@ -11,6 +11,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+
 
 @csrf_exempt
 def register(request):
