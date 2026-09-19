@@ -141,3 +141,5 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5500",
     "https://ubiquitous-halibut-p7jwpv9qrp5v27qvw-5500.app.github.dev",
 ]
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
