@@ -97,6 +97,36 @@ def register(request):
         status=201
     )
 
+def verify_email(request):
+    user_id = request.GET.get("user_id")
+    token = request.GET.get("token")
+
+    if not user_id or not token:
+        return JsonResponse(
+            {"error": "Invalid verification link."},
+            status=400
+        )
+
+    try:
+        user = User.objects.get(id=user_id)
+    except User.DoesNotExist:
+        return JsonResponse(
+            {"error": "User not found."},
+            status=404
+        )
+
+    if default_token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+
+        return JsonResponse({
+            "message": "Email verified successfully. Your account is now active."
+        })
+
+    return JsonResponse(
+        {"error": "Invalid or expired verification link."},
+        status=400
+    )
 
 def menu_list(request):
     menu_items = MenuItem.objects.filter(
