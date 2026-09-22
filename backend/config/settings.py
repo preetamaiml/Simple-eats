@@ -143,3 +143,5 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+FRONTEND_URL = "https://ubiquitous-halibut-p7jwpv9qrp5v27qvw-5500.app.github.dev"

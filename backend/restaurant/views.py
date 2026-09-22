@@ -14,6 +14,8 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 
+from django.conf import settings
+
 
 @csrf_exempt
 def register(request):
@@ -74,7 +76,7 @@ def register(request):
     token = default_token_generator.make_token(user)
 
     verification_url = (
-        "http://localhost:5500/verify-email.html"
+        f"{settings.FRONTEND_URL}/verify-email.html"
         f"?user_id={user.id}&token={token}"
     )
 
